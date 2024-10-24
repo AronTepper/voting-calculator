@@ -12,21 +12,39 @@ class ResultCalculator
     {
         $totalResult = new TotalResult();
 
+        foreach ($votes as $vote) {
+            $partyName = $vote->getPartyName();
 
+            if (!isset($partyResults[$partyName])) {
+                $partyResult = new GO\Stemgedrag\Models\PartyResult();
+                $partyResult->setPartyName($partyName);
+                $partyResult->setAmountFor(0);
+                $partyResult->setAmountAgainst(0);
+                $partyResults[$partyName] = $partyResult;
+            }
 
-
-        //TODO implement calculation method.
-
-
-
-
-        if ($totalResult->isAccepted()) {
-            $result = "aangenomen";
-        } else {
-            $result = "afgewezen";
+            if ($vote->isFor()) {
+                $partyResults[$partyName]->setAmountFor($partyResults[$partyName]->getAmountFor() + 1);
+            } else {
+                $partyResults[$partyName]->setAmountAgainst($partyResults[$partyName]->getAmountAgainst() + 1);
+            }
         }
 
-        echo "Deze stemming is " + $result + ".";
+        $totalResult->setPartyResults($partyResults);
+
+        $totalFor = 0;
+        $totalAgainst = 0;
+
+        foreach ($partyResults as $partyResult) {
+            $totalFor += $partyResult->getAmountFor();
+            $totalAgainst += $partyResult->getAmountAgainst();
+        }
+
+        $totalResult->setIsAccepted($totalFor > $totalAgainst);
+
+        $result = $totalResult->isAccepted() ? "aangenomen" : "afgewezen";
+
+        return "Deze stemming is " . $result . ".";
     }
 
 }

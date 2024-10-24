@@ -2,6 +2,31 @@
 
 class ResultCalculator
 {
+    /**
+     * @var int
+     */
+    private $totalVotesFor = 0;
+
+    /**
+     * @var int
+     */
+    private $totalVotesAgainst = 0;
+
+    /**
+     * @var TotalResult
+     */
+    private $totalResult;
+
+    /**
+     * @var GO\Stemgedrag\Models\PartyResult[]
+     */
+    private $partyResults = [];
+
+    public function __construct()
+    {
+        $this->totalResult = new TotalResult();
+        $this->partyResults = [];
+    }
 
     /**
      * @param Vote[] $votes
@@ -10,41 +35,43 @@ class ResultCalculator
      */
     public function calculateResult(array $votes): string
     {
-        $totalResult = new TotalResult();
-
         foreach ($votes as $vote) {
             $partyName = $vote->getPartyName();
 
-            if (!isset($partyResults[$partyName])) {
+            if (!isset($this->partyResults[$partyName])) {
                 $partyResult = new GO\Stemgedrag\Models\PartyResult();
                 $partyResult->setPartyName($partyName);
                 $partyResult->setAmountFor(0);
                 $partyResult->setAmountAgainst(0);
-                $partyResults[$partyName] = $partyResult;
+                $this->partyResults[$partyName] = $partyResult;
             }
 
             if ($vote->isFor()) {
-                $partyResults[$partyName]->setAmountFor($partyResults[$partyName]->getAmountFor() + 1);
+                $this->partyResults[$partyName]->setAmountFor($this->partyResults[$partyName]->getAmountFor() + 1);
+                $this->totalVotesFor++;
             } else {
-                $partyResults[$partyName]->setAmountAgainst($partyResults[$partyName]->getAmountAgainst() + 1);
+                $this->partyResults[$partyName]->setAmountAgainst($this->partyResults[$partyName]->getAmountAgainst() + 1);
+                $this->totalVotesAgainst++;
             }
         }
 
-        $totalResult->setPartyResults($partyResults);
+        $this->totalResult->setPartyResults($this->partyResults);
 
-        $totalFor = 0;
-        $totalAgainst = 0;
+        $resultsByParty = "Stemmen per partij:\n \n";
+        foreach ($this->partyResults as $partyResult) {
 
-        foreach ($partyResults as $partyResult) {
-            $totalFor += $partyResult->getAmountFor();
-            $totalAgainst += $partyResult->getAmountAgainst();
+            $resultsByParty .= "Partij: " . $partyResult->getPartyName() . "\n";
+            $totalPartyVotes = $partyResult->getAmountFor() + $partyResult->getAmountAgainst();
+            $resultsByParty .= "Totaal stemmen: " . $totalPartyVotes . "\n";
+            $resultsByParty .=  "Voor: " . $partyResult->getAmountFor() . "\n";
+            $resultsByParty .=  "Tegen: " . $partyResult->getAmountAgainst() . "\n \n";
         }
 
-        $totalResult->setIsAccepted($totalFor > $totalAgainst);
+        $this->totalResult->setIsAccepted($this->totalVotesFor > $this->totalVotesAgainst);
 
-        $result = $totalResult->isAccepted() ? "aangenomen" : "afgewezen";
+        $result = $this->totalResult->isAccepted() ? "aangenomen" : "afgewezen";
 
-        return "Deze stemming is " . $result . ".";
+
+        return $resultsByParty . "Deze stemming is " . $result . " met " . $this->totalVotesFor . " stemmen voor en " . $this->totalVotesAgainst . " tegen. \n";
     }
-
 }

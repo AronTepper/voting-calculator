@@ -72,6 +72,6 @@ class ResultCalculator
         $result = $this->totalResult->isAccepted() ? "aangenomen" : "afgewezen";
 
 
-        return $resultsByParty . "Deze stemming is " . $result . " met " . $this->totalVotesFor . " stemmen voor en " . $this->totalVotesAgainst . " tegen. \n";
+        return $resultsByParty . "Deze stemming is " . $result . " met " . $this->totalVotesFor . " stemmen voor en " . $this->totalVotesAgainst . " stemmen tegen. \n";
     }
 }

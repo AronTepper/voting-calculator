@@ -7,17 +7,17 @@ class PartyResult
     /**
      * @var string
      */
-    private $partyName;
+    private $partyName = "";
 
     /**
      * @var integer
      */
-    private $amountFor;
+    private $amountFor = 0;
 
     /**
      * @var integer
      */
-    private $amountAgainst;
+    private $amountAgainst = 0;
 
     /**
      * @return string

@@ -7,12 +7,12 @@ class TotalResult
      *
      * @var boolean
      */
-    private $isAccepted;
+    private $isAccepted = false;
 
     /**
      * @var PartyResult[]
      */
-    private $partyResults;
+    private $partyResults = [];
 
     /**
      * @return bool

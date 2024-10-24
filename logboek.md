@@ -1,10 +1,12 @@
 # Logboek
 
+Mijn gedachten hierin gewoon losjes genoteerd. Tijdsindicatie er soms achteraan toegevoegd. Indien er nog vragen zijn; contactgegevens voeg ik toe in de mail aan Bert. 
+
 1. Casus goed lezen.
 
-2. Bij de eerste keer lezen herken ik dat opdracht 1 een FizzBuzz-achtige opdracht is. Deze moet vrij snel te doen zijn. Misschien de Tom Scott (of Computerphile?) video waar ik hierover geleerd heb nog even kijken?
+2. Bij de eerste keer lezen herken ik dat opdracht 1 een FizzBuzz-achtige opdracht is. Deze moet vrij snel te doen zijn. Misschien de Tom Scott (of Computerphile?) video waar ik hierover geleerd heb, nog even kijken?
 
-3. Opdracht 2 lijkt voort te borduren op opdracht 1 met een extra recursief probleem erin. Deze lijkt ook niet al te moeilijk, maar wel even de details goed lezen en checken in een sandbox achteraf. De hint is een goede verduidelijking. Note to self: niet vergeten af te ronden. Gezien het beperkte aantal inwoners waarmee we werken, lijkt leesbaarheid belangrijker dan performance o.i.d.
+3. Opdracht 2 lijkt voort te borduren op opdracht 1, met een extra recursief probleem erin. Deze lijkt ook niet al te moeilijk, maar wel even de details goed lezen en achteraf in een sandbox checken of de output juist lijkt. De hint is een goede verduidelijking. Note to self: niet vergeten af te ronden. Gezien het beperkte aantal inwoners waarmee we werken, lijkt leesbaarheid belangrijker dan performance o.i.d.
 
 4. Opdracht 3 lijkt me al iets wat misschien intern gebruikt zou kunnen worden, maar waar veel code dan is aangepast of weggehaald. Dit is gelijk wat ingewikkelder, omdat een begrip van de structuur en het doel van iedere class eerst wel belangrijk is. Ben misschien een beetje paranoïde dat hier ergens al een bug is ingevoegd.  
    Nevermind, zie dat mijn wantrouwen gerechtvaardigd was; de "+" voor de concatenation gebruiken zal vast niet per ongeluk door een verdwaalde JS-developer zijn geschreven.
@@ -27,7 +29,7 @@
 
 9. Opdracht 1 was vrij weinig werk, vooral dingen dubbelchecken of het werkte en of ik geen fouten maakte. En niet vergeten om "$i" bij 1 te laten beginnen. (10 min)
 
-10. Voor opdracht 2 geldt hetzelfde. Nog even bepalen wat voor loop hier handig is en niet vergeten om de `extraLetters` op te tellen bij `newLetters`. Ook de non-respondersberekening nog even dubbel checken. (15 min)
+10. Voor opdracht 2 geldt hetzelfde. Nog even bepalen wat voor loop hier handig is en niet vergeten om de `$extraLetters` op te tellen bij `$newLetters`. Ook de non-respondersberekening nog even dubbelchecken. (15 min)
 
 11. Opdracht 3 duurt wat langer. Allereerst is het begrijpen wat het idee achter de verschillende classes is en hoe het met deze opzet zou moeten werken. Daarnaast ben je automatisch al een beetje aan het nadenken over opdracht 4. Allereerst maar wat werkend gemaakt en ondertussen een lijstje van punten voor opdracht 4 geschreven. (45 min minimaal)
 
@@ -39,13 +41,13 @@
 
 15. **Opdracht 4:**  
     Aangezien ik hier ondertussen toch al aan het typen was, kan ik mijn gedachten en aanbevelingen net zo goed hier plaatsen.  
-    Wat ik allereerst dacht, is dat het in principe een slecht idee is om digitaal te stemmen. Het gaat echter om bitterballen, en met alle respect naar B. Urger en Mora, deze stemming maakt relatief niet zo heel veel uit. In het kader gedachtenexperiment, is het daarom misschien ook wel leuk om een betrouwbaar en kwalitatief hoogwaardig bitterballen stem-programma te bedenken.  
+    Wat ik allereerst dacht, is dat het in principe een slecht idee is om digitaal te stemmen. Het gaat echter om bitterballen, en met alle respect naar B. Urger en Mora, deze stemming maakt relatief niet zo heel veel uit. In het kader van een gedachtenexperiment is het daarom misschien ook wel leuk om een betrouwbaar en kwalitatief hoogwaardig bitterballen-stemprogramma te bedenken.  
 
-    Allereerst lijkt het mij verstandiger om arrays van `Votes` bij te houden in plaats van `int $votesFor` en `int $votesAgainst` bijvoorbeeld. Zo kun je stemmen van individuele raadsleden ook weergeven, maar nog veel belangrijker: checken of ze misschien meermaals gestemd hebben. Geen idee of dit al de bedoeling was in opdracht 3, maar volgens mij gebeurt dit nog nergens namelijk.  
+    Allereerst lijkt het mij verstandiger om arrays van `Votes` bij te houden in plaats van `int $votesFor` en `int $votesAgainst`. Zo kun je stemmen van individuele raadsleden ook weergeven, maar nog veel belangrijker: checken of ze misschien meermaals gestemd hebben. Geen idee of dit al de bedoeling was in opdracht 3, maar volgens mij gebeurt dit nog nergens namelijk.  
 
-    Wat betreft de spellingsfouten van de partijnamen: het handmatig invullen van partijnamen en deze als key gebruiken vind ik al een slecht idee. Het zou, lijkt mij, veel beter zijn om gebruik te maken van aparte `Vote`, `Voter/Councilor`, en `Party`-classes. Zodat je gewoon een multiselect kan gebruiken met beschikbare partijen/stemmers.  
+    Wat betreft de spellingsfouten van de partijnamen: het handmatig invullen van partijnamen en deze als key gebruiken, vind ik al een slecht idee. Het zou, lijkt mij, veel beter zijn om gebruik te maken van aparte `Vote`, `Voter/Councilor`, en `Party`-classes. Zodat je gewoon een multiselect kan gebruiken met beschikbare partijen/stemmers.  
     Als het, om de een of andere reden, wel moet in deze structuur, heb ik denk ik de simpelste en meest effectieve manier om fouten te herkennen al geïmplementeerd, namelijk het printen van `$resultsByParty`.  
-    Daarnaast dacht ik zelf ook gelijk aan iets Fuse.js-achtigs met een voorgedefinieerde lijst of enums van `$validPartyNames`. Had hier zelf geen ervaring mee met PHP, maar een collega gaf me vervolgens de tip om gebruik te maken van Levenshtein distance (iets als `levenshtein($inputName, $validName)` waarbij je ittereert over `$validPartyNames`).  
+    Daarnaast dacht ik zelf ook gelijk aan iets Fuse.js-achtigs met een voorgedefinieerde lijst of enums van `$validPartyNames`. Had hier zelf geen ervaring mee met PHP, maar een collega gaf me vervolgens de tip om gebruik te maken van Levenshtein distance (iets als `levenshtein($inputName, $validName)` waarbij je itereert over `$validPartyNames`).  
 
     Overige punten die me opvielen:
     - De naamgeving van variabelen is voor verbetering vatbaar (`$amount{...}` bijv.).

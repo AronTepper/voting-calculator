@@ -19,7 +19,7 @@ function createVote(int $id, bool $isFor, string $personName, string $partyName)
 }
 
 $votes = [
-    createVote(1, false, "Alice", "Burgers in Beweging"),
+    createVote(1, true, "Alice", "Burgers in Beweging"),
     createVote(2, false, "Bob", "Landgenoten"),
     createVote(3, true, "Charlie", "Partij voor de Burger"),
     createVote(4, false, "Dave", "Groenland"),

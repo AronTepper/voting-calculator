@@ -32,6 +32,7 @@ function calculateExtraLetters($letters) {
 }
 
 $nonResponders = $totalCitizens - ($votedYes + $votedNo + $votedNoOpinion);
+echo "Bewoners die niet gereageerd hebben: " . $nonResponders  . "\n";
 $totalLetters = $totalCitizens + calculateExtraLetters($nonResponders);
 echo "Maximaal aantal brieven: " . $totalLetters  . "\n";
 ?>

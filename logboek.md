@@ -56,6 +56,6 @@ Mijn gedachten hierin gewoon losjes genoteerd. Tijdsindicatie er soms achteraan 
   
     Tot slot viel het me op dat het op dit moment niet mogelijk is om je te onthouden van de stemming. 
 
-(bij elkaar opgeteld ongeveer 1 uur gok ik)
+(bij elkaar opgeteld minimaal meer dan 1 uur)
 
 16. Tot slot heb ik aan dit document gewerkt, en weet wel zeker dat hier het meeste tijd in heeft gezeten.
